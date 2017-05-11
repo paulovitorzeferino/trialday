@@ -9,4 +9,4 @@ end
 #   name = params[:name]
 #   { name: name }
 # end
-run start
+run build_app

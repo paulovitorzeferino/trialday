@@ -24,7 +24,7 @@ def response_builder(block)
   [ HTTP_SUCCESS, http_header , [block.call.to_json] ]
 end
 
-def start
+def build_app
   Rack::URLMap.new routes_mapping['route'] => url_map_parameter_builder
 end
 
