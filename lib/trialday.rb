@@ -1,7 +1,8 @@
 require "rack"
 require "json"
+require "insensitive_hash"
 
-METHODS = ['get']
+METHODS = ['get','post']
 HTTP_SUCCESS = 200
 
 def routes_mapping
@@ -10,7 +11,10 @@ end
 
 def url_map_parameter_builder
   Proc.new do |env|
-    response_builder(routes_mapping['get'])
+    request = Rack::Request.new(env)
+    request_method = request.request_method.downcase
+    params = JSON.parse(request.body.read).insensitive if request_method == 'post'
+    response_builder(params, routes_mapping[request_method])
   end
 end
 
@@ -20,8 +24,8 @@ def http_header
   end
 end
 
-def response_builder(block)
-  [ HTTP_SUCCESS, http_header , [block.call.to_json] ]
+def response_builder(params, block)
+  [ HTTP_SUCCESS, http_header , [block.call(params).to_json] ]
 end
 
 def build_app

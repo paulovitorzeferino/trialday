@@ -57,6 +57,4 @@ describe 'Trailday' do
       end
     end
   end
-
-
 end
