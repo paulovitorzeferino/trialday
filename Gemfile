@@ -1,3 +1,5 @@
+$: << 'lib'
+
 source 'https://rubygems.org'
 
 gem 'bunlder'
