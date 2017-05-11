@@ -28,6 +28,13 @@ describe 'Trailday' do
         expect(last_response.ok?).to be_truthy
       end
     end
+
+    context 'failure' do
+      it 'returns http code of failure' do
+        get '/blas'
+        expect(last_response.ok?).to be_falsey
+      end
+    end
   end
 
 
