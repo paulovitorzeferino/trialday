@@ -37,5 +37,26 @@ describe 'Trailday' do
     end
   end
 
+  describe '#post' do
+    context 'success' do
+      let(:params) { { name: "Paulo" }.to_json }
+      before(:each) do
+        post "/bla", params
+      end
+
+      it 'returns content-type' do
+        expect(last_response.headers['Content-Type']).to eq("application/json")
+      end
+
+      it 'returns json result' do
+        expect(last_response.body).to eq(params)
+      end
+
+      it 'returns http code success' do
+        expect(last_response.ok?).to be_truthy
+      end
+    end
+  end
+
 
 end
