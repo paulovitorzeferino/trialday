@@ -68,7 +68,3 @@ Content-Type: application/json
 
 {"name": "Mario"}
 ```
-
-### Notes
-
-Feel free to add *support* code to the examples, if you think it will make your life easier.
