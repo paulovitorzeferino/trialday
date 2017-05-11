@@ -68,3 +68,11 @@ Content-Type: application/json
 
 {"name": "Mario"}
 ```
+
+### Notes
+
+The server is run via bundle exec rackup --port 3000
+
+Test Case 1: curl http://localhost:3000/bla -i
+
+Test Case 2: curl -XPOST http://localhost:3000/bla -i -H "Content-Type: application/json" -d '{"name": "Mario"}'
